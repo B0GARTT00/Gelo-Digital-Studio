@@ -1,0 +1,310 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b0d14;
+  --bg-2: #0f1627;
+  --ink: #e7e9f6;
+  --ink-soft: #c6cde4;
+  --accent: #56e1ff;
+  --accent-2: #7c5cff;
+  --border: rgba(255, 255, 255, 0.08);
+  --ring: rgba(86, 225, 255, 0.2);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--bg);
+}
+
+body {
+  margin: 0;
+  font-family: "Sora", "Space Grotesk", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: linear-gradient(160deg, var(--bg), var(--bg-2));
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: auto;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  width: 520px;
+  height: 520px;
+  top: -180px;
+  right: -120px;
+  background: radial-gradient(circle, rgba(86, 225, 255, 0.22), transparent 65%);
+  opacity: 0.7;
+}
+
+body::after {
+  width: 620px;
+  height: 620px;
+  bottom: -240px;
+  left: -160px;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.2), transparent 65%);
+  opacity: 0.6;
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "Space Grotesk", "Sora", "Segoe UI", sans-serif;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    color: rgba(231, 233, 246, 0.86);
+    line-height: 1.7;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(231, 233, 246, 0.6);
+  }
+
+  select option {
+    color: #0b0d14;
+    background: #f1f4ff;
+  }
+}
+
+@layer components {
+  .section {
+    @apply px-6 sm:px-10 lg:px-16 py-16 lg:py-24;
+    scroll-margin-top: 96px;
+  }
+
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: linear-gradient(180deg, rgba(11, 13, 20, 0.95), rgba(11, 13, 20, 0.75));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: none;
+  }
+
+  .nav-link {
+    position: relative;
+    padding-bottom: 2px;
+    color: rgba(231, 233, 246, 0.65);
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: rgba(231, 233, 246, 0.95);
+  }
+
+  .nav-link.active {
+    color: rgba(231, 233, 246, 0.95);
+  }
+
+  .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    border-radius: 999px;
+  }
+
+  .nav-scroll {
+    scrollbar-width: none;
+  }
+
+  .nav-scroll::-webkit-scrollbar {
+    height: 0;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight;
+  }
+
+  .section-lead {
+    @apply mt-4 text-base sm:text-lg max-w-2xl;
+    color: rgba(231, 233, 246, 0.82);
+  }
+
+  .glass-card {
+    @apply rounded-2xl border border-white/15;
+    background: linear-gradient(140deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .cta-panel {
+    @apply rounded-2xl border border-white/15;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    background: linear-gradient(140deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .cta-panel p {
+    color: rgba(231, 233, 246, 0.9);
+  }
+
+  @media (min-width: 768px) {
+    .cta-panel {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .glass-card p {
+    color: rgba(231, 233, 246, 0.9);
+  }
+
+  .glass-card li {
+    color: rgba(231, 233, 246, 0.9);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full text-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.16em] transition;
+    background: linear-gradient(120deg, rgba(86, 225, 255, 0.85), rgba(124, 92, 255, 0.85));
+    box-shadow: 0 0 24px rgba(86, 225, 255, 0.28);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-white/80 transition;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .btn-ghost:hover {
+    border-color: rgba(86, 225, 255, 0.5);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .chip {
+    @apply rounded-full border border-white/20 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/60;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .gradient-text {
+    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .orb {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(86, 225, 255, 0.35), transparent 65%);
+    filter: blur(2px);
+    opacity: 0.8;
+    animation: pulseGlow 8s ease-in-out infinite;
+  }
+
+  .mockup-shell {
+    position: relative;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+  }
+
+  .mockup-screen {
+    background: linear-gradient(130deg, rgba(86, 225, 255, 0.18), rgba(124, 92, 255, 0.22));
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+  }
+
+  .mockup-line {
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .mockup-line strong {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    border-radius: 999px;
+  }
+
+  .fade-up {
+    animation: fadeUp 0.8s ease-out both;
+  }
+
+  .delay-1 {
+    animation-delay: 0.1s;
+  }
+
+  .delay-2 {
+    animation-delay: 0.2s;
+  }
+
+  .delay-3 {
+    animation-delay: 0.35s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .orb {
+    animation: none;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.85;
+  }
+}
