@@ -1,5 +1,16 @@
+import type { CSSProperties } from 'react'
 import { useEffect, useState } from 'react'
 import { useForm, ValidationError } from '@formspree/react'
+import studioOverview from '../port 1.png'
+import abstractFlow from '../port 2.png'
+import mobileSystems from '../port 3.png'
+import heroVideo from '../port vid.mp4'
+import acadexPreview from '../acadex.png'
+import eargasmPreview from '../eargasm.png'
+import fleetPreview from '../fleet.png'
+import leakPreview from '../leak.png'
+import smartBuyPreview from '../smart buy.png'
+import stridePreview from '../stride.png'
 
 const highlights = [
   {
@@ -49,36 +60,42 @@ const projects = [
     type: 'Mobile app',
     copy: 'Utility app used by Davao City Water District for leak reporting and field workflows.',
     link: 'https://github.com/abllenos/LeakDetectionV1',
+    image: leakPreview,
   },
   {
     title: 'Smart Buy Grocery App',
     type: 'Mobile app',
     copy: 'React Native app with budget tracking and grocery list management using MobX.',
     link: 'https://github.com/B0GARTT00/Smart-Buy',
+    image: smartBuyPreview,
   },
   {
     title: 'Fleettrack',
     type: 'Web app',
     copy: 'Fleet tracking dashboard built with PHP and Laravel.',
     link: 'https://github.com/B0GARTT00/fleettrack',
+    image: fleetPreview,
   },
   {
     title: 'AcadexV3 (Capstone)',
     type: 'Web app',
     copy: 'Team capstone platform built with classmates for Brokenshire College.',
     link: 'https://github.com/xaviworks/AcadexV3',
+    image: acadexPreview,
   },
   {
     title: 'Eargasm',
     type: 'Mobile app',
     copy: 'Audio-focused mobile app demo built with JavaScript and React Native.',
     link: 'https://github.com/B0GARTT00/Eargasm',
+    image: eargasmPreview,
   },
   {
     title: 'Stride Quest Fitness App',
     type: 'Mobile app',
     copy: 'Workouts, progress tracking, achievements, and profile flows in a clean mobile UI.',
     link: 'https://github.com/B0GARTT00/StrideQuest-V2',
+    image: stridePreview,
   },
 ]
 
@@ -248,7 +265,10 @@ function App() {
   }, [])
 
   return (
-    <div className="relative">
+    <div
+      className="site-shell relative"
+      style={{ '--site-bg-image': `url(${abstractFlow})` } as CSSProperties}
+    >
       <div className="sticky-nav">
         <div className="flex items-center justify-between gap-6 px-6 sm:px-10 lg:px-16 py-4">
           <div className="text-sm uppercase tracking-[0.3em] text-white/70">Gelo Digital Studio</div>
@@ -294,43 +314,15 @@ function App() {
             </div>
             </div>
 
-            <div className="relative mt-12 flex items-center justify-center lg:mt-0 lg:justify-end">
-              <div className="mockup-shell p-6 w-[320px] sm:w-[420px] lg:w-[460px]">
-                <div className="mockup-screen">
-                  <div className="flex items-center justify-between text-xs uppercase tracking-[0.28em] text-white/60">
-                    <span>Studio Dash</span>
-                    <span>Live</span>
-                  </div>
-                  <div className="mt-6 space-y-4">
-                    <div className="mockup-line">
-                      <strong style={{ width: '68%' }} />
-                    </div>
-                    <div className="mockup-line">
-                      <strong style={{ width: '82%' }} />
-                    </div>
-                    <div className="grid grid-cols-3 gap-3">
-                      <div className="h-20 rounded-xl bg-white/10" />
-                      <div className="h-20 rounded-xl bg-white/5" />
-                      <div className="h-20 rounded-xl bg-white/10" />
-                    </div>
-                    <div className="h-24 rounded-2xl bg-white/5" />
-                  </div>
-                </div>
-              </div>
-              <div className="mockup-shell p-3 w-[160px] sm:w-[190px] absolute -bottom-8 -left-2 sm:-left-12 lg:-left-20">
-                <div className="mockup-screen">
-                  <div className="h-4 w-16 rounded-full bg-white/20" />
-                  <div className="mt-4 space-y-3">
-                    <div className="h-16 rounded-xl bg-white/10" />
-                    <div className="mockup-line">
-                      <strong style={{ width: '76%' }} />
-                    </div>
-                    <div className="mockup-line">
-                      <strong style={{ width: '54%' }} />
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="hero-visual mt-12 lg:mt-0">
+              <video
+                src={heroVideo}
+                autoPlay
+                muted
+                loop
+                playsInline
+                aria-label="Digital product interface animation"
+              />
             </div>
           </div>
         </div>
@@ -340,8 +332,14 @@ function App() {
         <div className="glass-card p-8 sm:p-10">
           <p className="chip">What I do</p>
           <div className="mt-6 grid gap-6 md:grid-cols-3">
-            {highlights.map((item) => (
-              <div key={item.title} className="rounded-2xl border border-white/10 p-6 bg-white/5">
+            {highlights.map((item, index) => (
+              <div
+                key={item.title}
+                className="image-card rounded-2xl border border-white/10 p-6"
+                style={{
+                  '--card-bg-image': `url(${index % 2 === 0 ? studioOverview : mobileSystems})`,
+                } as CSSProperties}
+              >
                 <h3 className="text-xl font-semibold text-white">{item.title}</h3>
                 <p className="mt-3 text-sm sm:text-base">{item.copy}</p>
               </div>
@@ -361,8 +359,14 @@ function App() {
           </div>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {services.map((service) => (
-            <div key={service.title} className="glass-card p-6">
+          {services.map((service, index) => (
+            <div
+              key={service.title}
+              className="glass-card image-card p-6"
+              style={{
+                '--card-bg-image': `url(${index % 2 === 0 ? studioOverview : mobileSystems})`,
+              } as CSSProperties}
+            >
               <h3 className="text-lg font-semibold text-white">{service.title}</h3>
               <p className="mt-3 text-sm sm:text-base">{service.copy}</p>
             </div>
@@ -402,20 +406,25 @@ function App() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => (
-            <div key={project.title} className="glass-card p-6">
-              <p className="text-xs uppercase tracking-[0.3em] text-white/80">{project.type}</p>
-              <h3 className="mt-3 text-lg font-semibold text-white">{project.title}</h3>
-              <p className="mt-3 text-sm sm:text-base">{project.copy}</p>
-              {project.link ? (
-                <a
-                  className="mt-4 inline-flex text-sm text-white/80 hover:text-white"
-                  href={project.link}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  View on GitHub
-                </a>
-              ) : null}
+            <div key={project.title} className="glass-card project-card">
+              <div className="project-preview">
+                <img src={project.image} alt={`${project.title} preview`} loading="lazy" />
+              </div>
+              <div className="p-6">
+                <p className="text-xs uppercase tracking-[0.3em] text-white/80">{project.type}</p>
+                <h3 className="mt-3 text-lg font-semibold text-white">{project.title}</h3>
+                <p className="mt-3 text-sm sm:text-base">{project.copy}</p>
+                {project.link ? (
+                  <a
+                    className="mt-4 inline-flex text-sm text-white/80 hover:text-white"
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    View on GitHub
+                  </a>
+                ) : null}
+              </div>
             </div>
           ))}
         </div>
@@ -453,9 +462,6 @@ function App() {
                 </div>
               ))}
             </div>
-            <p className="mt-6 text-xs text-white/80">
-              Only list the tools you actually use.
-            </p>
           </div>
         </div>
       </section>
@@ -467,7 +473,13 @@ function App() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {processSteps.map((step, index) => (
-            <div key={step.title} className="glass-card p-6">
+            <div
+              key={step.title}
+              className="glass-card image-card p-6"
+              style={{
+                '--card-bg-image': `url(${index % 2 === 0 ? mobileSystems : studioOverview})`,
+              } as CSSProperties}
+            >
               <p className="text-sm uppercase tracking-[0.3em] text-white/80">Step {index + 1}</p>
               <h3 className="mt-3 text-lg font-semibold text-white">{step.title}</h3>
               <p className="mt-3 text-sm sm:text-base">{step.copy}</p>
@@ -482,8 +494,14 @@ function App() {
           <h2 className="section-title mt-4">Why Choose Gelo Digital Studio?</h2>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {reasons.map((reason) => (
-            <div key={reason.title} className="glass-card p-6">
+          {reasons.map((reason, index) => (
+            <div
+              key={reason.title}
+              className="glass-card image-card p-6"
+              style={{
+                '--card-bg-image': `url(${index % 2 === 0 ? studioOverview : mobileSystems})`,
+              } as CSSProperties}
+            >
               <h3 className="text-lg font-semibold text-white">{reason.title}</h3>
               <p className="mt-3 text-sm sm:text-base">{reason.copy}</p>
             </div>
@@ -498,8 +516,14 @@ function App() {
           <p className="section-lead">Price depends on project scope.</p>
         </div>
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          {packages.map((pkg) => (
-            <div key={pkg.title} className="glass-card p-6">
+          {packages.map((pkg, index) => (
+            <div
+              key={pkg.title}
+              className="glass-card image-card p-6"
+              style={{
+                '--card-bg-image': `url(${index % 2 === 0 ? mobileSystems : studioOverview})`,
+              } as CSSProperties}
+            >
               <h3 className="text-xl font-semibold text-white">{pkg.title}</h3>
               <p className="mt-2 text-sm text-white/80">{pkg.tag}</p>
               <p className="mt-2 text-sm text-white/80">{pkg.starting}</p>
@@ -614,9 +638,9 @@ function App() {
       </section>
 
       <footer className="section pt-0">
-        <div className="flex flex-col gap-6 border-t border-white/10 pt-8 text-sm text-white/80 sm:flex-row sm:items-center sm:justify-between">
-          <p>Gelo Digital Studio - Full-stack websites, web apps, and mobile apps.</p>
-          <p>Based in your time zone. Remote projects welcome.</p>
+        <div className="flex flex-col gap-2 border-t border-white/10 pt-5 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
+          <p>© 2026 Gelo Digital Studio. All rights reserved.</p>
+          <p>Remote projects welcome.</p>
         </div>
       </footer>
     </div>
