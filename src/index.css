@@ -157,6 +157,20 @@ body::after {
     height: 0;
   }
 
+  .brand-mark {
+    @apply flex shrink-0 flex-col leading-none;
+  }
+
+  .brand-mark span {
+    @apply text-sm font-semibold uppercase text-white/85;
+    letter-spacing: 0.18em;
+  }
+
+  .brand-mark small {
+    @apply mt-1 text-[10px] uppercase text-white/45;
+    letter-spacing: 0.16em;
+  }
+
   .section-title {
     @apply text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight;
   }
@@ -164,6 +178,44 @@ body::after {
   .section-lead {
     @apply mt-4 text-base sm:text-lg max-w-2xl;
     color: rgba(231, 233, 246, 0.82);
+  }
+
+  .hero-kicker {
+    @apply inline-flex rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase text-white/70;
+    letter-spacing: 0.18em;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .hero-meta {
+    @apply mt-5 flex max-w-2xl flex-wrap gap-2;
+  }
+
+  .hero-meta span {
+    @apply rounded-full border border-white/15 px-3 py-1 text-xs font-medium text-white/75;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .hero-stats {
+    @apply mt-8 grid max-w-2xl gap-3 sm:grid-cols-3;
+  }
+
+  .hero-stats div {
+    @apply rounded-2xl border border-white/15 p-4;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .hero-stats strong {
+    @apply block text-lg font-semibold text-white;
+  }
+
+  .hero-stats span {
+    @apply mt-1 block text-xs uppercase text-white/55;
+    letter-spacing: 0.12em;
+    line-height: 1.45;
+  }
+
+  .about-copy {
+    @apply space-y-4;
   }
 
   .glass-card {
@@ -224,6 +276,16 @@ body::after {
   .project-card {
     min-height: 100%;
     overflow: hidden;
+    transition:
+      transform 0.24s ease,
+      border-color 0.24s ease,
+      box-shadow 0.24s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(86, 225, 255, 0.32);
+    box-shadow: 0 22px 52px rgba(0, 0, 0, 0.34);
   }
 
   .project-preview {
@@ -240,9 +302,172 @@ body::after {
     object-fit: cover;
   }
 
+  .proof-card {
+    @apply rounded-2xl border border-white/15 p-5;
+    background: linear-gradient(145deg, rgba(86, 225, 255, 0.12), rgba(255, 255, 255, 0.04));
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+  }
+
+  .proof-card p {
+    @apply text-xs font-semibold uppercase text-white/60;
+    letter-spacing: 0.16em;
+  }
+
+  .proof-card h3 {
+    @apply mt-3 text-xl font-semibold text-white;
+  }
+
+  .proof-card span {
+    @apply mt-2 block text-sm text-white/75;
+    line-height: 1.65;
+  }
+
+  .featured-project {
+    @apply grid overflow-hidden rounded-2xl border border-white/15 lg:grid-cols-[1.05fr_0.95fr];
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04));
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+  }
+
+  .featured-project-media {
+    @apply min-h-[280px] border-b border-white/10 lg:border-b-0 lg:border-r;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .featured-project-media img {
+    @apply block h-full w-full object-cover;
+  }
+
+  .featured-project-body {
+    @apply p-6 sm:p-8 lg:p-10;
+  }
+
+  .featured-project-body h3 {
+    @apply mt-5 text-3xl font-semibold text-white sm:text-4xl;
+  }
+
+  .featured-project-body p {
+    @apply mt-4 text-sm text-white/80 sm:text-base;
+  }
+
+  .featured-meta {
+    @apply mt-6 rounded-2xl border border-white/10 p-4;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .featured-meta span {
+    @apply block text-xs font-semibold uppercase text-white/55;
+    letter-spacing: 0.18em;
+  }
+
+  .featured-meta strong {
+    @apply mt-1 block text-base font-semibold text-white;
+  }
+
+  .featured-project-body ul {
+    @apply mt-5 space-y-2 text-sm text-white/75;
+  }
+
+  .featured-project-body li {
+    @apply leading-relaxed;
+  }
+
+  .project-detail {
+    @apply mt-4 border-t border-white/10 pt-4;
+  }
+
+  .project-detail span {
+    @apply text-xs font-semibold uppercase text-white/55;
+    letter-spacing: 0.18em;
+  }
+
+  .project-detail p {
+    @apply mt-1 text-sm text-white/85;
+    line-height: 1.6;
+  }
+
+  .project-tags {
+    @apply mt-4 flex flex-wrap gap-2;
+  }
+
+  .project-tags span {
+    @apply rounded-full border border-white/15 px-3 py-1 text-xs text-white/75;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .project-link {
+    @apply mt-5 inline-flex rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase text-white/80 transition;
+    letter-spacing: 0.12em;
+  }
+
+  .project-link:hover {
+    border-color: rgba(86, 225, 255, 0.55);
+    color: white;
+    transform: translateY(-1px);
+  }
+
+  .contact-links {
+    @apply mt-6 rounded-2xl border border-white/15 p-5;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .contact-links p {
+    @apply text-sm text-white/80;
+  }
+
+  .contact-links div {
+    @apply mt-4 flex flex-wrap gap-3;
+  }
+
+  .contact-links a {
+    @apply inline-flex rounded-full border border-white/20 px-4 py-2 text-sm font-semibold uppercase text-white/80 transition;
+    letter-spacing: 0.12em;
+  }
+
+  .contact-links a:hover {
+    border-color: rgba(86, 225, 255, 0.5);
+    color: white;
+  }
+
+  .contact-details {
+    @apply mt-5 grid gap-3;
+  }
+
+  .contact-details div {
+    @apply rounded-2xl border border-white/10 p-4;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .contact-details span {
+    @apply block text-xs font-semibold uppercase text-white/55;
+    letter-spacing: 0.14em;
+  }
+
+  .contact-details strong {
+    @apply mt-1 block text-sm font-medium text-white/85;
+    line-height: 1.6;
+  }
+
+  .footer-bar {
+    @apply flex flex-col gap-4 border-t border-white/10 pt-5 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between;
+  }
+
+  .footer-bar div {
+    @apply flex flex-wrap gap-3;
+  }
+
+  .footer-bar a {
+    @apply uppercase text-white/60 transition;
+    letter-spacing: 0.14em;
+  }
+
+  .footer-bar a:hover {
+    color: white;
+  }
+
   .hero-visual {
     position: relative;
     width: min(100%, 620px);
+    aspect-ratio: 16 / 10;
     margin-inline: auto;
     overflow: hidden;
     border-radius: 28px;
@@ -259,6 +484,7 @@ body::after {
   }
 
   .hero-visual video {
+    object-position: 42% center;
     transform: scale(1.28);
     transform-origin: center;
   }
