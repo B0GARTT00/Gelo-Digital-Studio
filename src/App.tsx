@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useForm, ValidationError } from '@formspree/react'
-import acadexPreview from '../acadex.png'
-import eargasmPreview from '../eargasm.png'
-import fleetPreview from '../fleet.png'
-import leakPreview from '../leak.png'
-import smartBuyPreview from '../smart buy.png'
-import stridePreview from '../stride.png'
+import acadexPreview from './assets/project-previews/acadex.jpg'
+import eargasmPreview from './assets/project-previews/eargasm.jpg'
+import fleetPreview from './assets/project-previews/fleet.jpg'
+import leakPreview from './assets/project-previews/leak.jpg'
+import smartBuyPreview from './assets/project-previews/smart-buy.jpg'
+import stridePreview from './assets/project-previews/stride.jpg'
 
 const projects = [
   { title: 'CLINICKA', year: '2026', category: 'Full-stack web system', description: 'A secure clinic information and records workspace for Brokenshire College.', stack: 'React · NestJS · MySQL', link: 'https://github.com/B0GARTT00/CLINICKA', cover: 'Clinicka', featured: true },
