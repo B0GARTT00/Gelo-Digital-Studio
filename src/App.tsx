@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useForm, ValidationError } from '@formspree/react'
-import eargasmPreview from './assets/project-previews/eargasm.jpg'
 import leakPreview from './assets/project-previews/leak.jpg'
 import smartBuyPreview from './assets/project-previews/smart-buy.jpg'
 import acadexCover from './assets/project-covers/acadex.jpg'
@@ -14,7 +13,6 @@ const projects = [
   { title: 'FleetTrack', year: '2025', category: 'Web application', description: 'A centralized vehicle fleet and reservation management system for administrative teams.', stack: 'Laravel · PHP · Blade', link: 'https://github.com/B0GARTT00/fleettrack', image: fleettrackCover, art: true },
   { title: 'Smart Buy', year: '2024', category: 'Mobile product', description: 'A grocery companion that brings budgeting and list-making into one considered flow.', stack: 'React Native · MobX', link: 'https://github.com/B0GARTT00/Smart-Buy', image: smartBuyPreview },
   { title: 'ACADEX', year: '2025', category: 'Academic platform', description: 'A role-based academic performance and course-outcome management system.', stack: 'Laravel · PHP · Blade', link: 'https://github.com/B0GARTT00/ACADEXV4', image: acadexCover, art: true },
-  { title: 'Eargasm', year: '2024', category: 'Mobile concept', description: 'An audio-focused app exploration with an emphasis on simple, fluid mobile navigation.', stack: 'React Native · JavaScript', link: 'https://github.com/B0GARTT00/Eargasm', image: eargasmPreview },
   { title: 'StrideQuest', year: '2024', category: 'Gamified fitness app', description: 'Fitness tracking reimagined through RPG progression, quests, and community.', stack: 'React Native · Firebase', link: 'https://github.com/B0GARTT00/StrideQuest-V2', image: stridequestCover, art: true },
 ]
 const skills = ['React', 'React Native', 'TypeScript', 'Laravel', 'PHP', 'MySQL', 'Firebase', 'UI implementation']
